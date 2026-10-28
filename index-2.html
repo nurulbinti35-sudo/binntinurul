@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Informasi pemilihan Ketua dan Wakil Ketua OSIS: kenali visi misi, jadwal, dan cara berpartisipasi secara demokratis.">
+  <title>Pemilihan Ketua OSIS | Suara Kita, Masa Depan Kita</title>
+  <style>
+    /* ===== Pengaturan dasar dan warna ===== */
+    :root {
+      --navy: #102447;
+      --blue: #2459d3;
+      --blue-light: #eaf0ff;
+      --gold: #ffc857;
+      --ink: #17233b;
+      --muted: #667085;
+      --paper: #f7f9fe;
+      --white: #ffffff;
+      --border: #e4e9f3;
+      --shadow: 0 18px 45px rgba(16, 36, 71, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--white); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; color: var(--blue); background: var(--blue-light); font-size: .82rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+    .section { padding: 88px 0; }
+    .section-heading { max-width: 680px; margin: 0 auto 42px; text-align: center; }
+    .section-heading h2 { margin: 14px 0 10px; font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.15; letter-spacing: -.04em; }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; padding: 13px 20px; border: 2px solid transparent; border-radius: 12px; font-weight: 800; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: var(--navy); background: var(--gold); box-shadow: 0 9px 22px rgba(255, 200, 87, .24); }
+    .btn-primary:hover { background: #ffda83; }
+    .btn-outline { color: var(--white); border-color: rgba(255,255,255,.45); background: transparent; }
+    .btn-outline:hover { background: rgba(255,255,255,.1); }
+
+    /* ===== Navbar lengket dan menu mobile ===== */
+    .navbar { position: sticky; z-index: 20; top: 0; background: rgba(255,255,255,.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(228,233,243,.85); }
+    .nav-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 900; color: var(--navy); letter-spacing: -.03em; }
+    .brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; color: var(--navy); background: var(--gold); font-size: 1.1rem; }
+    .brand small { display: block; color: var(--muted); font-size: .69rem; font-weight: 700; letter-spacing: .09em; }
+    .nav-links { display: flex; align-items: center; gap: 28px; color: #4b5871; font-size: .92rem; font-weight: 700; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links .nav-cta { padding: 10px 15px; color: white; background: var(--blue); border-radius: 10px; }
+    .menu-toggle { display: none; border: 0; background: transparent; color: var(--navy); font-size: 1.7rem; cursor: pointer; }
+
+    /* ===== Hero ===== */
+    .hero { position: relative; overflow: hidden; color: white; background: radial-gradient(circle at 80% 15%, rgba(64,110,224,.55), transparent 30%), linear-gradient(125deg, #102447 0%, #17396f 56%, #2459d3 100%); }
+    .hero::after { content: ""; position: absolute; width: 430px; height: 430px; right: -170px; bottom: -240px; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; box-shadow: 0 0 0 45px rgba(255,255,255,.035), 0 0 0 90px rgba(255,255,255,.025); }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 56px; padding-top: 84px; padding-bottom: 92px; }
+    .hero .eyebrow { color: #fff1c9; background: rgba(255,255,255,.12); }
+    .hero h1 { margin: 20px 0; max-width: 680px; font-size: clamp(2.8rem, 6vw, 5rem); line-height: .99; letter-spacing: -.065em; }
+    .hero h1 span { color: var(--gold); }
+    .hero-copy { max-width: 560px; color: #dbe5ff; font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 26px; color: #dbe5ff; font-size: .88rem; }
+    .hero-note strong { color: white; }
+    .hero-art { position: relative; min-height: 360px; display: grid; place-items: center; }
+    .art-card { width: min(100%, 390px); padding: 24px; color: var(--ink); background: white; border-radius: 28px; box-shadow: 0 28px 70px rgba(0,0,0,.25); transform: rotate(2deg); }
+    .art-top { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: .8rem; font-weight: 800; }
+    .vote-symbol { display: grid; place-items: center; width: 100%; height: 180px; margin: 20px 0; border-radius: 20px; background: linear-gradient(135deg, #eaf0ff, #fff5d9); }
+    .ballot { position: relative; width: 126px; height: 118px; border: 5px solid var(--blue); border-radius: 12px; background: white; transform: rotate(-5deg); }
+    .ballot::before { content: ""; position: absolute; top: 24px; left: -12px; width: 140px; height: 10px; border-radius: 4px; background: var(--navy); }
+    .ballot::after { content: "✓"; position: absolute; top: -45px; left: 37px; color: #1f9d68; font-size: 4.7rem; font-weight: 900; transform: rotate(8deg); }
+    .art-caption { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .art-caption strong { font-size: 1.1rem; }
+    .art-caption span { color: var(--blue); font-size: .8rem; font-weight: 800; }
+    .floating-tag { position: absolute; right: -4px; bottom: 22px; padding: 14px 18px; color: var(--navy); background: var(--gold); border-radius: 15px; box-shadow: var(--shadow); font-weight: 900; transform: rotate(-4deg); }
+
+    /* ===== Tentang dan nilai demokrasi ===== */
+    .about { background: var(--paper); }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature-card { padding: 28px; background: white; border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 8px 28px rgba(16,36,71,.035); transition: transform .25s, box-shadow .25s; }
+    .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .feature-icon { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 19px; border-radius: 16px; background: var(--blue-light); font-size: 1.5rem; }
+    .feature-card h3 { margin: 0 0 8px; font-size: 1.13rem; }
+    .feature-card p { margin: 0; color: var(--muted); font-size: .94rem; }
+
+    /* ===== Jadwal kegiatan ===== */
+    .schedule-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .schedule-card { position: relative; overflow: hidden; padding: 27px; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .schedule-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--blue); }
+    .schedule-card:nth-child(2)::before { background: var(--gold); }
+    .schedule-card:nth-child(3)::before { background: #36a77a; }
+    .step { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: var(--blue); background: var(--blue-light); font-weight: 900; }
+    .schedule-card h3 { margin: 18px 0 8px; }
+    .schedule-card p { color: var(--muted); margin: 0 0 16px; font-size: .94rem; }
+    .schedule-date { display: inline-block; padding: 6px 10px; border-radius: 8px; background: #f1f4fa; color: #485670; font-size: .8rem; font-weight: 800; }
+    .schedule-note { margin: 22px auto 0; max-width: 740px; color: var(--muted); text-align: center; font-size: .87rem; }
+
+    /* ===== Testimoni ===== */
+    .testimonials { color: white; background: var(--navy); }
+    .testimonials .section-heading p { color: #c3cee4; }
+    .testimonials .eyebrow { color: #fff1c9; background: rgba(255,255,255,.1); }
+    .quote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .quote-card { padding: 26px; border: 1px solid rgba(255,255,255,.14); border-radius: 20px; background: rgba(255,255,255,.06); }
+    .quote-mark { color: var(--gold); font-size: 2.5rem; line-height: 1; font-weight: 900; }
+    .quote-card blockquote { margin: 12px 0 22px; color: #edf2ff; }
+    .quote-person { display: flex; align-items: center; gap: 12px; }
+    .avatar { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; color: var(--navy); background: var(--gold); font-weight: 900; }
+    .quote-person strong { display: block; }
+    .quote-person small { color: #bdc9e2; }
+
+    /* ===== Form partisipasi ===== */
+    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 54px; align-items: start; }
+    .contact-copy h2 { margin: 16px 0; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.08; letter-spacing: -.05em; }
+    .contact-copy p { color: var(--muted); }
+    .contact-points { display: grid; gap: 12px; margin-top: 24px; }
+    .contact-points span { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+    .contact-points b { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; color: #147a50; background: #e2f7ed; }
+    .form-card { padding: 30px; border: 1px solid var(--border); border-radius: 22px; background: white; box-shadow: var(--shadow); }
+    .form-card h3 { margin: 0 0 6px; font-size: 1.35rem; }
+    .form-card > p { margin: 0 0 22px; color: var(--muted); font-size: .9rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { display: grid; gap: 7px; margin-bottom: 15px; }
+    .field label { font-size: .88rem; font-weight: 800; }
+    .field input, .field select, .field textarea { width: 100%; padding: 12px 13px; color: var(--ink); background: #fbfcff; border: 1px solid #dce3f0; border-radius: 10px; outline: none; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(36,89,211,.12); }
+    .field textarea { min-height: 100px; resize: vertical; }
+    .form-card .btn { width: 100%; border: 0; }
+    .form-message { min-height: 24px; margin-top: 12px; color: #147a50; font-size: .9rem; font-weight: 700; }
+    .form-disclaimer { margin-top: 10px; color: var(--muted); font-size: .78rem; }
+
+    /* ===== Footer ===== */
+    footer { padding: 30px 0; color: #c7d2e8; background: #0a1932; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .footer-brand { color: white; font-weight: 900; }
+    .footer-inner p { margin: 5px 0 0; font-size: .82rem; }
+    .socials { display: flex; flex-wrap: wrap; gap: 16px; font-size: .88rem; font-weight: 700; }
+    .socials a:hover { color: var(--gold); }
+
+    /* ===== Animasi scroll yang ringan ===== */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
+
+    /* ===== Tampilan tablet dan ponsel (breakpoint 768px) ===== */
+    @media (max-width: 768px) {
+      .container { width: min(100% - 32px, 560px); }
+      .section { padding: 66px 0; }
+      .nav-inner { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 18px 22px 22px; align-items: stretch; gap: 4px; flex-direction: column; background: white; border-bottom: 1px solid var(--border); box-shadow: 0 15px 25px rgba(16,36,71,.08); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 11px 8px; }
+      .nav-links .nav-cta { text-align: center; margin-top: 6px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 26px; padding-top: 64px; padding-bottom: 66px; }
+      .hero h1 { font-size: clamp(2.7rem, 12vw, 4rem); }
+      .hero-art { min-height: 315px; }
+      .art-card { max-width: 350px; }
+      .floating-tag { right: 0; bottom: 6px; }
+      .feature-grid, .schedule-grid, .quote-grid { grid-template-columns: 1fr; }
+      .feature-card, .schedule-card, .quote-card { padding: 24px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 430px) {
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .form-card { padding: 22px; }
+      .hero-actions .btn { width: 100%; }
+      .hero-art { min-height: 285px; }
+      .vote-symbol { height: 145px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar: menu akan berubah menjadi hamburger pada layar kecil -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#beranda" aria-label="Kembali ke beranda">
+        <span class="brand-mark">OS</span>
+        <span>SUARA SISWA<small>PEMILIHAN KETUA OSIS</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navLinks">☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
+        <a href="#tentang">Tentang</a>
+        <a href="#kegiatan">Tahapan</a>
+        <a href="#testimoni">Suara Siswa</a>
+        <a class="nav-cta" href="#partisipasi">Ikut Berpartisipasi ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero: pesan utama dan tombol ajakan -->
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="eyebrow">Demokrasi dimulai dari sekolah</span>
+          <h1>Suara Kita,<br><span>Masa Depan Kita.</span></h1>
+          <p class="hero-copy">Saatnya memilih pemimpin OSIS yang jujur, bertanggung jawab, dan siap membawa ide-ide baru. Kenali calonmu, pahami visi misinya, lalu gunakan hak pilih dengan bijak!</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#partisipasi">Saya Siap Berpartisipasi <span aria-hidden="true">→</span></a>
+            <a class="btn btn-outline" href="#kegiatan">Lihat Tahapan</a>
+          </div>
+          <div class="hero-note"><span aria-hidden="true">✦</span><span><strong>Satu suara itu berarti.</strong> Pilih dengan hati dan pikiran.</span></div>
+        </div>
+        <div class="hero-art reveal" aria-label="Ilustrasi kotak suara pemilihan OSIS" role="img">
+          <div class="art-card">
+            <div class="art-top"><span>PEMILIHAN OSIS</span><span>● DEMOKRATIS</span></div>
+            <div class="vote-symbol"><div class="ballot"></div></div>
+            <div class="art-caption"><strong>Gunakan hak pilihmu!</strong><span>JUJUR • ADIL • AMANAH</span></div>
+          </div>
+          <div class="floating-tag">#SuaraKitaBerharga</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tentang: tiga manfaat utama pemilihan OSIS -->
+    <section class="section about" id="tentang">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Kenapa penting?</span>
+          <h2>Pemilihan OSIS bukan sekadar mencoblos</h2>
+          <p>Ini kesempatan kita belajar memilih, menghargai perbedaan, dan ikut menentukan kegiatan sekolah ke arah yang lebih baik.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">🗳️</div><h3>Belajar Demokrasi</h3><p>Setiap siswa punya hak yang sama untuk menentukan pilihan tanpa paksaan atau tekanan dari siapa pun.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">🤝</div><h3>Menghargai Perbedaan</h3><p>Kita boleh mendukung calon yang berbeda, tetapi tetap menjaga persahabatan dan saling menghormati.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">🌱</div><h3>Membangun Sekolah</h3><p>Pemimpin terpilih diharapkan menampung aspirasi siswa dan menjalankan program yang bermanfaat.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jadwal/tahapan: tanggal bisa disesuaikan dengan jadwal sekolah -->
+    <section class="section" id="kegiatan">
+      <div class="container">
+        <div class="section-heading reveal"><span class="eyebrow">Ikuti prosesnya</span><h2>Tiga tahapan menuju pilihan terbaik</h2><p>Pastikan kamu mengikuti informasi resmi dari panitia pemilihan OSIS di sekolah.</p></div>
+        <div class="schedule-grid">
+          <article class="schedule-card reveal"><span class="step">01</span><h3>Kenali Para Calon</h3><p>Simak visi, misi, program kerja, dan rekam jejak setiap pasangan calon. Jangan hanya memilih karena ikut-ikutan teman.</p><span class="schedule-date">Tahap pengenalan</span></article>
+          <article class="schedule-card reveal"><span class="step">02</span><h3>Debat &amp; Kampanye</h3><p>Dengarkan gagasan para calon, ajukan pertanyaan yang sopan, dan nilai program yang paling realistis untuk siswa.</p><span class="schedule-date">Tahap penyampaian visi misi</span></article>
+          <article class="schedule-card reveal"><span class="step">03</span><h3>Hari Pemungutan Suara</h3><p>Datang sesuai arahan panitia, gunakan hak pilih sendiri, dan terima hasil penghitungan dengan sikap sportif.</p><span class="schedule-date">Hari pemilihan</span></article>
+        </div>
+        <p class="schedule-note">Catatan: tanggal, tempat, dan tata cara resmi mengikuti pengumuman panitia OSIS sekolah masing-masing.</p>
+      </div>
+    </section>
+
+    <!-- Testimoni contoh untuk melengkapi landing page; ganti dengan kutipan nyata bila tersedia -->
+    <section class="section testimonials" id="testimoni">
+      <div class="container">
+        <div class="section-heading reveal"><span class="eyebrow">Suara siswa</span><h2>Demokrasi tumbuh dari kebiasaan kita</h2><p>Contoh pesan yang mengingatkan kita untuk ikut serta dengan sportif dan bertanggung jawab.</p></div>
+        <div class="quote-grid">
+          <article class="quote-card reveal"><div class="quote-mark">“</div><blockquote>Menurutku, pemimpin yang baik bukan cuma punya banyak janji, tetapi juga mau mendengarkan pendapat teman-temannya.</blockquote><div class="quote-person"><span class="avatar">A</span><span><strong>Andi</strong><small>Siswa SMA</small></span></div></article>
+          <article class="quote-card reveal"><div class="quote-mark">“</div><blockquote>Beda pilihan itu wajar. Yang penting kita tetap saling menghargai dan tidak menjatuhkan calon lain.</blockquote><div class="quote-person"><span class="avatar">N</span><span><strong>Nadia</strong><small>Siswi SMA</small></span></div></article>
+          <article class="quote-card reveal"><div class="quote-mark">“</div><blockquote>Ikut memilih membuat kita belajar bertanggung jawab atas keputusan dan masa depan kegiatan sekolah.</blockquote><div class="quote-person"><span class="avatar">R</span><span><strong>Raka</strong><small>Siswa SMA</small></span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form demo: belum mengirim data ke server -->
+    <section class="section" id="partisipasi">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <span class="eyebrow">Ayo ambil bagian</span>
+          <h2>Suaramu punya arti. Mulai dari sini.</h2>
+          <p>Isi formulir contoh berikut untuk menyampaikan dukungan terhadap pemilihan yang jujur, damai, dan tertib. Formulir ini merupakan demo untuk tugas sekolah.</p>
+          <div class="contact-points"><span><b>✓</b> Pilih berdasarkan visi dan misi</span><span><b>✓</b> Hormati semua kandidat</span><span><b>✓</b> Jaga suasana tetap damai</span></div>
+        </div>
+        <form class="form-card reveal" id="participationForm">
+          <h3>Formulir Partisipasi</h3><p>Lengkapi data di bawah ini.</p>
+          <div class="form-row">
+            <div class="field"><label for="name">Nama lengkap</label><input id="name" name="name" type="text" placeholder="Nama kamu" required></div>
+            <div class="field"><label for="class">Kelas</label><input id="class" name="class" type="text" placeholder="Contoh: XI-2" required></div>
+          </div>
+          <div class="field"><label for="email">Email (opsional)</label><input id="email" name="email" type="email" placeholder="nama@email.com"></div>
+          <div class="field"><label for="interest">Saya ingin ikut sebagai</label><select id="interest" name="interest" required><option value="">Pilih salah satu</option><option>Peserta pemilih</option><option>Panitia kegiatan</option><option>Pendukung kampanye damai</option><option>Penyampai aspirasi siswa</option></select></div>
+          <div class="field"><label for="message">Harapan untuk OSIS (opsional)</label><textarea id="message" name="message" placeholder="Tuliskan harapan atau ide kamu..."></textarea></div>
+          <button class="btn btn-primary" type="submit">Kirim Pernyataan Partisipasi ↗</button>
+          <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
+          <div class="form-disclaimer">Demo lokal: data tidak dikirim atau disimpan ke server.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><div class="footer-brand">SUARA SISWA · PEMILIHAN OSIS</div><p>Belajar memilih, belajar bertanggung jawab. © <span id="year"></span></p></div>
+      <div class="socials"><a href="#beranda">Beranda</a><a href="#tentang">Tentang</a><a href="#partisipasi">Partisipasi</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Menu hamburger: buka/tutup navigasi di perangkat mobile.
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+      menuToggle.textContent = isOpen ? '×' : '☰';
+    });
+    // Tutup menu setelah salah satu tautan dipilih.
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Buka menu navigasi');
+      menuToggle.textContent = '☰';
+    }));
+    // Animasi muncul saat elemen masuk ke layar, dengan fallback untuk browser lama.
+    const revealElements = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealElements.forEach(element => observer.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add('visible'));
+    }
+    // Tahun copyright selalu mengikuti tahun perangkat.
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Form hanya menampilkan pesan demo; belum terhubung ke backend/server.
+    const form = document.getElementById('participationForm');
+    const formMessage = document.getElementById('formMessage');
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      formMessage.textContent = `Terima kasih, ${name}! Pernyataan partisipasimu sudah dicatat pada tampilan demo ini.`;
+      form.reset();
+    });
+  </script>
+</body>
+</html>
